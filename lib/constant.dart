@@ -1,0 +1,14 @@
+import 'package:flutter/material.dart';
+const redColor = Color(0xFFE82127);
+const blackColor = Color(0xFF000000);
+const whiteColor = Color(0xFFFFFFFF);
+const greenColor = Color(0xFF80B918);
+const lightBlueColor = Color(0xFF5D5FEF);
+const blueColor = Color(0xFF007AFF);
+const pinkColor = Color(0xFFEA0B8C);
+const backgroundColor = Color(0xFFEFEFEF);
+const greyColor = Color(0xFF767676);
+const lightGreyColor = Color(0xFFE1E1E1);
+const yellowColor = Color(0xFFFFA903);
+const deepPurpleColor = Color(0xFF5D5FEF);
+const transparentColor = Colors.transparent;
