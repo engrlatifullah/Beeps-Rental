@@ -1,5 +1,6 @@
 import 'package:beeps_rental/constant.dart';
 import 'package:beeps_rental/screens/pick_up_screen.dart';
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/reusable_button.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,12 @@ class _ApplePayState extends State<ApplePay> {
   DateTime selectedDate = DateTime.now();
   bool term = false;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
   showDate() {
     showDatePicker(
       context: context,
@@ -35,10 +42,12 @@ class _ApplePayState extends State<ApplePay> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Profile(),
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: ListView(
           children: [
-            const HeaderCard(),
+             HeaderCard(onTap: opendrawer,),
             const SizedBox(
               height: 20,
             ),

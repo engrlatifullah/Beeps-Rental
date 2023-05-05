@@ -1,5 +1,6 @@
 import 'package:beeps_rental/screens/extend_trip19.dart';
 import 'package:beeps_rental/screens/pick_up_vehicle.dart';
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/reusable_button.dart';
 import 'package:flutter/material.dart';
 
@@ -25,15 +26,22 @@ class _EndTrip22State extends State<EndTrip22> {
     "assets/images/4.png",
     "assets/images/5.png",
     "assets/images/3.png",
-  ];
+];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+    drawer: const Profile(),
+    key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: ListView(
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(

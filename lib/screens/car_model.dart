@@ -1,4 +1,5 @@
 import 'package:beeps_rental/constant.dart';
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/header_card.dart';
 import 'package:flutter/material.dart';
 
@@ -16,15 +17,22 @@ class _CarModelState extends State<CarModel> {
   bool location = false;
   bool instruction = false;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: const Profile(),
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             const SizedBox(
               height: 20,
             ),

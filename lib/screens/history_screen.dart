@@ -1,3 +1,4 @@
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/car_model_card.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +17,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
   bool history = true;
   bool currentTrip = false;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: const Profile(),
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: ListView(
           children: [
@@ -33,7 +39,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 children: [
                   Row(
                     children: [
-                      Image.asset("assets/icons/menue.png"),
+                      InkWell(
+                          onTap: (){
+                            _scaffoldKey.currentState!.openDrawer();
+                          },
+                          child: Image.asset("assets/icons/menue.png")),
                       const SizedBox(
                         width: 20,
                       ),

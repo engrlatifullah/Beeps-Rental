@@ -1,4 +1,5 @@
 import 'package:beeps_rental/constant.dart';
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/reusable_text.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,15 @@ class _DashBoardState extends State<DashBoard> {
     "Model Z",
   ];
 
+  final boolValue = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   int _currentIndex = 0;
   bool check = false;
 
@@ -29,7 +39,9 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
+        drawer: const Profile(),
         body: ListView(
           children: [
             Container(
@@ -42,7 +54,11 @@ class _DashBoardState extends State<DashBoard> {
                 children: [
                   Row(
                     children: [
-                      Image.asset("assets/icons/menue.png"),
+                      InkWell(
+                          onTap: (){
+                            _scaffoldKey.currentState!.openDrawer();
+                          },
+                          child: Image.asset("assets/icons/menue.png")),
                       const SizedBox(
                         width: 20,
                       ),
@@ -227,9 +243,9 @@ class _DashBoardState extends State<DashBoard> {
                                         weight: FontWeight.w700,
                                         size: 20,
                                       ),
-                                      Checkbox(value: check, onChanged: (v){
+                                      Checkbox(value: boolValue[index], onChanged: (v){
                                         setState(() {
-                                          check = v!;
+                                          boolValue[index] = v!;
                                         });
                                       },
                                         side: const BorderSide(color: redColor, width: 2),

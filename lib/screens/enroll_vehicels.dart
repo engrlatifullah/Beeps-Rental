@@ -19,6 +19,14 @@ class _EnrollVehiclesState extends State<EnrollVehicles> {
   bool privacy = false;
   bool vehicle = false;
 
+  List boolValues = [
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+
   bool selectionVisibility = false;
   bool termVisibility = false;
   bool privacyVisibility = false;
@@ -114,10 +122,10 @@ class _EnrollVehiclesState extends State<EnrollVehicles> {
                                           size: 20,
                                         ),
                                         Checkbox(
-                                          value: check,
+                                          value: boolValues[index],
                                           onChanged: (v) {
                                             setState(() {
-                                              check = v!;
+                                              boolValues[index] = v!;
                                             });
                                           },
                                           side: const BorderSide(

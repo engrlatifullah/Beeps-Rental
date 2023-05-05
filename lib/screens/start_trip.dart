@@ -1,4 +1,5 @@
 import 'package:beeps_rental/screens/cancel_booking.dart';
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/header_card.dart';
 import 'package:beeps_rental/widget/reusable_button.dart';
 import 'package:beeps_rental/widget/reusable_row.dart';
@@ -7,16 +8,27 @@ import 'package:flutter/material.dart';
 import '../constant.dart';
 import '../widget/reusable_text.dart';
 
-class StartTrip extends StatelessWidget {
+class StartTrip extends StatefulWidget {
   const StartTrip({Key? key}) : super(key: key);
 
+  @override
+  State<StartTrip> createState() => _StartTripState();
+}
+
+class _StartTripState extends State<StartTrip> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Profile(),
+        key: _scaffoldKey,
         body: ListView(
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(

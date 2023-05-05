@@ -1,4 +1,5 @@
 import 'package:beeps_rental/screens/extend_trip.dart';
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:beeps_rental/widget/header_card.dart';
@@ -7,16 +8,27 @@ import 'package:beeps_rental/widget/reusable_button.dart';
 import '../constant.dart';
 import '../widget/border_button.dart';
 
-class Trip extends StatelessWidget {
+class Trip extends StatefulWidget {
   const Trip({Key? key}) : super(key: key);
 
+  @override
+  State<Trip> createState() => _TripState();
+}
+
+class _TripState extends State<Trip> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Profile(),
+        key: _scaffoldKey,
         body: ListView(
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(

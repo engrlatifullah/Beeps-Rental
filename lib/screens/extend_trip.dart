@@ -1,3 +1,4 @@
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/widget/reusable_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -24,6 +25,11 @@ class _ExtendTripState extends State<ExtendTrip> {
     "assets/icons/i5.png",
   ];
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
   bool valetMode = false;
   bool smartSummon = false;
 
@@ -31,10 +37,12 @@ class _ExtendTripState extends State<ExtendTrip> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Profile(),
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: ListView(
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(

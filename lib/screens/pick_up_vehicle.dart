@@ -8,6 +8,7 @@ import '../widget/border_button.dart';
 import '../widget/header_card.dart';
 import '../widget/reusable_row.dart';
 import '../widget/reusable_text.dart';
+import 'history_screen.dart';
 
 class PickUpVehicle extends StatefulWidget {
   const PickUpVehicle({Key? key}) : super(key: key);
@@ -19,6 +20,11 @@ class PickUpVehicle extends StatefulWidget {
 class _PickUpVehicleState extends State<PickUpVehicle> {
   DateTime selectedDate = DateTime.now();
   bool term = false;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
 
   showDate() {
     showDatePicker(
@@ -37,10 +43,13 @@ class _PickUpVehicleState extends State<PickUpVehicle> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
+        drawer: const Profile(),
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: ListView(
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             const SizedBox(
               height: 20,
             ),
@@ -281,7 +290,7 @@ class _PickUpVehicleState extends State<PickUpVehicle> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (BuildContext context) {
-                            return const Profile();
+                            return const HistoryScreen();
                           }),
                         );
                       },

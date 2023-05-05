@@ -1,3 +1,4 @@
+import 'package:beeps_rental/screens/profile.dart';
 import 'package:beeps_rental/screens/trip.dart';
 import 'package:flutter/material.dart';
 
@@ -24,14 +25,20 @@ class _CancelBookingState extends State<CancelBooking> {
     "assets/images/5.png",
     "assets/images/3.png",
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  opendrawer(){
+    _scaffoldKey.currentState!.openDrawer();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Profile(),
+        key: _scaffoldKey,
         backgroundColor: backgroundColor,
         body: ListView(
           children: [
-            const HeaderCard(),
+            HeaderCard(onTap: opendrawer,),
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
